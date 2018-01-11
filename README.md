@@ -14,9 +14,9 @@ Initially I tried with larger values of Kp but the car was always going out of t
 
 Then I used PID controller to correct bias, but it also did not work. On the contrary it increased the oscillations and the car quickly went out of the lane.
 
-Getting a good value for Kp and Kd parameter was difficult. The key moment came when I realized that kp has to be very small compared Kd. With this condition the car was able to successfully navigate the lane. At this stage I tried to incorporate the Ki, but it alays resulted in taking the car out of the lane due to oscillations. Again, the key moment came when I realized that Ki has to be extremely small (close to zero). 
+Getting a good value for Kp and Kd parameter was difficult. The key moment came when I realized that kp has to be very small compared to Kd. With this condition, the car was able to successfully navigate the lane. At this stage I tried to incorporate Ki, but it always resulted in taking the car out of the lane(due to oscillations). Again, the key moment came when I realized that Ki has to be extremely small (close to zero). Infact, having a small value of Ki reduces oscillation and result in better driving experience. The impact of small value of Ki is evident from the table below, where we can see that the squared cross track error(CTE) is minimized.
 
-It was very difficult to manually get the coefficients of the PID controller because they vary widely in their range (from 6 to 0.0003). Once successfull to get the initial coefficients(3, 0.3, 0.0003) that can drive the car around the simulated track, I then used squared error of the cte(cross track error) to tune the parameters to get the least error. The following table gives the value of the coefficient and the squared cte for one complete lap:
+It was very difficult to manually get the coefficients of the PID controller because they vary widely in their range (from 6 to 0.0003). Once successfull to get the initial coefficients(3, 0.3, 0.0003) that can drive the car around the simulated track, I then used squared CTE to tune the parameters to get the least error. The following table gives the value of the coefficient and the squared CTE for one complete lap:
 
 | Kd    | Kp     | Ki      | squared cte|
 | ----- |:------:| -------:| -----------|
@@ -37,4 +37,4 @@ It was very difficult to manually get the coefficients of the PID controller bec
 | 6.5   | 0.2    | 0.0003  | 1193       |
 | 6.5   | 0.2    | 0       | 1391       |     
 
-As per above table, the minimum value of squared cte is when Kp=0.25, Ki = 0.0003 and Kd=6.5. These are the parameters I have used in my code (line 37-40 in main.cpp)
+As per above table, the minimum value of squared CTE is when Kp=0.25, Ki = 0.0003 and Kd=6.5. These are the parameters I have used in my code (line 37-40 in main.cpp)
